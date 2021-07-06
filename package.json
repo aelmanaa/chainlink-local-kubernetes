@@ -1,0 +1,22 @@
+{
+  "name": "chainlink-local-k8s",
+  "version": "1.0.0",
+  "description": "poc to run chainlink node on a local k8S cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chainlink/contracts": "^0.1.9",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "web3": "^1.4.0",
+    "@types/node": "^15.14.0"
+  },
+  "devDependencies": {
+    "truffle": "^5.3.14"
+  }
+}

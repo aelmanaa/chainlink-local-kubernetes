@@ -1,0 +1,19 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-local-config
+  namespace: chainlink
+data:
+  ROOT: '/chainlink'
+  LOG_LEVEL: 'debug'
+  ETH_CHAIN_ID: '1337'
+  MIN_OUTGOING_CONFIRMATIONS: '1'
+  MIN_INCOMING_CONFIRMATIONS: '1'
+  LINK_CONTRACT_ADDRESS: '0x733B6E72979264EE3896B8C7E793c5bEa04C9B3C'
+  CHAINLINK_TLS_PORT: '0'
+  SECURE_COOKIES: 'false'
+  GAS_UPDATER_ENABLED: 'true'
+  ALLOW_ORIGINS: '*'
+  ETH_URL: 'ws://host.docker.internal:8545'
+  DATABASE_TIMEOUT: '0'

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: storage
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13.3
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+            - name: config-init-scripts
+              mountPath: /docker-entrypoint-initdb.d/
+          resources: {}
+          command: ["docker-entrypoint.sh","postgres"]
+          # to activate all logs command:
+          # command: ["docker-entrypoint.sh","postgres","-c", "log_statement=all"]
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-data-pvc
+        - name: config-init-scripts
+          configMap:
+            name: postgres-init
