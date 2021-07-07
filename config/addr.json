@@ -1,5 +1,9 @@
 {
-	"linkTokenAddress": "0x733B6E72979264EE3896B8C7E793c5bEa04C9B3C",
-	"operatorAddress": "0x6423ACec03eea21b2FDBaeae67a3b87b82a313Ce",
-	"consumerAddress": "0x9c6C479f564CF65104566a2A7eb57E234c6c41aF"
+	"network": {
+		"host": "127.0.0.1",
+		"port": 8545
+	},
+	"linkTokenAddress": "0x99a72beCcD25EAe1a426C98Ec8882931f185Aa23",
+	"operatorAddress": "0x48fa56C6F14cB7754f62d06ad19332E281798195",
+	"consumerAddress": "0x2Abed45b7ddb4ec132BAeDb02399A04B7382bC3c"
 }

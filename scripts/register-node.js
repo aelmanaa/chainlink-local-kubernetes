@@ -13,6 +13,8 @@ module.exports = async callback => {
     let tx = await operator.setAuthorizedSenders([nodeAddress], { from: defaultAccount })
     const authorizedSenders = await operator.getAuthorizedSenders.call()
     console.log(`Get authorized senders: ${authorizedSenders}`)
+
+    //Fund node
     const fund = web3.utils.toWei('10', 'ether')
     console.log(`Send money ${fund} WEI from Default account ${defaultAccount} to Node ${nodeAddress}`)
     await web3.eth.sendTransaction({ from: defaultAccount, to: nodeAddress, value: fund })
