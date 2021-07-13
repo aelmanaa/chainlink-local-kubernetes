@@ -1,18 +1,20 @@
+// truffle migrate --f 1 --network ganache
+
 const { LinkToken } = require('@chainlink/contracts/truffle/v0.4/LinkToken')
 const { Operator } = require('@chainlink/contracts/truffle/v0.7/Operator')
 const Consumer = artifacts.require('Consumer')
 const fs = require('fs')
 
 
-module.exports = async (deployer, network, [defaultAccount]) => {
+module.exports = async (deployer, network, [owner]) => {
   // Local (development) networks need their own deployment of the LINK
   // token and the Operator contract
   LinkToken.setProvider(deployer.provider)
   Operator.setProvider(deployer.provider)
   try {
-    await deployer.deploy(LinkToken, { from: defaultAccount })
-    await deployer.deploy(Operator, LinkToken.address, defaultAccount, { from: defaultAccount })
-    await deployer.deploy(Consumer, LinkToken.address, { from: defaultAccount })
+    await deployer.deploy(LinkToken, { from: owner })
+    await deployer.deploy(Operator, LinkToken.address, owner, { from: owner })
+    await deployer.deploy(Consumer, LinkToken.address, { from: owner })
 
     let addr = {
       network: {
