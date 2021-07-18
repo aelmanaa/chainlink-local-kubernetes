@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: local-node
+  namespace: chainlink
+  labels:
+    app: local-node
+spec:
+  ports:
+   - port: 6688
+     targetPort: 6688
+  selector:
+   app: local-node
