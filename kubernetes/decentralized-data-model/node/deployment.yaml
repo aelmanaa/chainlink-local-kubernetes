@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-node
+  labels:
+    app: local-node
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: local-node
+  template:
+    metadata:
+      labels:
+        app: local-node
+    spec:
+      initContainers:
+        - name: init
+          image: busybox:latest
+          command: ['sh', '-c', 'echo ${USER_EMAIL} > /chainlink/.api; echo ${USER_PASSWORD} >> /chainlink/.api ; echo ${WALLET_PASS} > /chainlink/.password']
+          envFrom:
+            - secretRef:
+                name: node-local-secret
+          volumeMounts:
+            - name: shared
+              mountPath: /chainlink
+      containers:
+        - name: chainlink
+          image: smartcontract/chainlink:0.10.9
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 6688
+          resources: {}
+          command: ["chainlink","local", "n", "-p", "/chainlink/.password", "-a",  "/chainlink/.api"]
+          envFrom:
+            - secretRef:
+                name: node-local-secret
+            - configMapRef:
+                name: node-local-config
+          volumeMounts:
+            - name: shared
+              mountPath: /chainlink
+      volumes:
+        - name: shared
+          emptyDir: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-node-2
+  labels:
+    app: local-node-2
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: local-node-2
+  template:
+    metadata:
+      labels:
+        app: local-node-2
+    spec:
+      initContainers:
+        - name: init
+          image: busybox:latest
+          command: ['sh', '-c', 'echo ${USER_EMAIL} > /chainlink/.api; echo ${USER_PASSWORD} >> /chainlink/.api ; echo ${WALLET_PASS} > /chainlink/.password']
+          envFrom:
+            - secretRef:
+                name: node-local-secret-2
+          volumeMounts:
+            - name: shared
+              mountPath: /chainlink
+      containers:
+        - name: chainlink
+          image: smartcontract/chainlink:0.10.9
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 6688
+          resources: {}
+          command: ["chainlink","local", "n", "-p", "/chainlink/.password", "-a",  "/chainlink/.api"]
+          envFrom:
+            - secretRef:
+                name: node-local-secret-2
+            - configMapRef:
+                name: node-local-config-2
+          volumeMounts:
+            - name: shared
+              mountPath: /chainlink
+      volumes:
+        - name: shared
+          emptyDir: {}

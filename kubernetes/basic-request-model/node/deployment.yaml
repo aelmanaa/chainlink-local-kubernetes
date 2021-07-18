@@ -29,7 +29,7 @@ spec:
               mountPath: /chainlink
       containers:
         - name: chainlink
-          image: smartcontract/chainlink:0.10.8
+          image: smartcontract/chainlink:0.10.9
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 6688

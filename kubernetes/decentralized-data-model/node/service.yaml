@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: local-node
+  labels:
+    app: local-node
+spec:
+  ports:
+   - port: 6688
+     targetPort: 6688
+  selector:
+   app: local-node
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: local-node-2
+  labels:
+    app: local-node-2
+spec:
+  ports:
+   - port: 6688
+     targetPort: 6688
+  selector:
+   app: local-node-2

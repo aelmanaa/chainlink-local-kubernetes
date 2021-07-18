@@ -1,9 +1,23 @@
 {
-	"network": {
-		"host": "127.0.0.1",
-		"port": 8545
+	"ganache": {
+		"linkTokenAddress": "0x41AD2437A8176749A55bfAa66f54e12f17861E16",
+		"operatorAddress": "0xd13FBC17F45F583BfCb7Fba3d59c2dD733541A8D",
+		"consumerAddress": "0xEF234c08dD81FAE8ca00147efA9973da6b1D875d"
 	},
-	"linkTokenAddress": "0x99a72beCcD25EAe1a426C98Ec8882931f185Aa23",
-	"operatorAddress": "0x48fa56C6F14cB7754f62d06ad19332E281798195",
-	"consumerAddress": "0x2Abed45b7ddb4ec132BAeDb02399A04B7382bC3c"
+	"rinkeby-fork": {
+		"linkTokenAddress": "0xbB2c6ED0Bc98BEc4285Ae965A2d7d4dEd38623f8",
+		"operatorAddress": "0x73055CDDA1687F8BA831E5555dD4B9FF663e14d1",
+		"consumerAddress": "0x310512ABC9b76d04E32464b027B9e81b762B17ab",
+		"fluxAggregatorAddress": "0xC2a04a92e7a030ddFDD4569a673515084e5d838B",
+		"aggregatorProxyAddress": "0x4161FB4FaaB3b047dD2B9Ef79b6c83Ab29d16Cd5",
+		"priceConsumerAddress": "0x0ed507546781f9767696f215E4A31f34d39E0782"
+	},
+	"rinkeby": {
+		"linkTokenAddress": "0x2f0cCDD197C4B4b44ef6CBA902E6A23d6377B734",
+		"operatorAddress": "0xfB519c6C118178D0A7993EA96F49A15F0F8Dd1aD",
+		"consumerAddress": "0x11C1D9d7b2d391873e6F9A6901a98C42268b66d0",
+		"fluxAggregatorAddress": "0x56a1CB8672C6Deb270C764B0Dd5142B7726751F1",
+		"aggregatorProxyAddress": "0x4d7f1931ecE89ae4D4d27073A3ABCf0E7d5daA31",
+		"priceConsumerAddress": "0x03f20586b3a6e5A84F36c5e31d14A646e913c9d9"
+	}
 }
